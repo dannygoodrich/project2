@@ -10,3 +10,19 @@ module.exports = (sequelize, DataTypes) => {
   };
   return fridge;
 };
+
+
+
+
+
+
+/* <h2><%= user.name %></h2>
+
+<% bubble.forEach(function(puppy) { %>
+    <h2><%= puppy.name %></h2>
+
+<form action="/recipes" method="post">
+    <button type="submit">add to MyRecipes</button>
+</form>
+
+<% }) %> */
