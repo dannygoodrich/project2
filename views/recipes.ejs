@@ -1,9 +1,15 @@
 <h1>My Recipes</h1>
 <h3>hellllooo</h3>
 
-<% food.forEach(function(recipe) { %>
+<% data.food.forEach(function(recipe) { %>
     <h2><%= recipe.name %></h2>
     <a href="<%= recipe.link %>">recipe</a>
     <p><%= recipe.ingredients %></p>
     
 <% }); %>
+
+<div>
+    <% data.pantry.forEach(function(fridge) { %>
+        <p><%= fridge.ingredients %></p>
+    <% }) %>
+</div>

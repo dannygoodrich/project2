@@ -4,13 +4,17 @@ const axios = require('axios');
 
 var db = require('../models');
 
-
+// var fridge = db.fridge.findAll({
+//     where: { id: req.user.id },
+//     include: [db.fridge]
+// });
 
 
 
 router.get('/', function(req, res) {
     var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i}`;
     // Use request to call the API
+
     axios.get(puppyUrl).then( function(apiResponse) {
       var recipe = apiResponse.data.results;
     //   console.log(recipe);
@@ -25,22 +29,36 @@ router.get('/', function(req, res) {
 router.get('/recipes', function(req, res) {
     db.user.findOne({
         where: { id: req.user.id },
-        include: [db.recipe]
+        include: [db.recipe, db.fridge]
     }).then(function() {
         db.recipe.findAll({
             where: { userid: req.user.id }
-        }).then(function(recipes) {
-            console.log('⛈');
-          res.render('recipes', { food: recipes });
-
-    })
+        }).then(function() {
+            db.fridge.findAll({
+                where: {userId: req.user.id}
+            }).then(function(recipes, fridges) {
+                console.log('⛈');
+                res.render('recipes', { data: { food: recipes, pantry: fridges }});
+            })
+//{ food: recpes })
+        })
 
     });
 });
 
 router.get('/food', function(req, res) {
-    db.fridge.findAll()
-})
+    db.user.findOne({
+        where: { id: req.user.id },
+        include: [db.fridge]
+    }).then(function() {
+        db.fridge.findAll({
+            where: { userid: req.user.id }
+        }).then(function(fridge) {
+            console.log('🔥');
+            res.render('pantry', {data: { food: fridge , shopping: list}});
+        });
+    });
+});
 
 
 
