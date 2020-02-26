@@ -57,7 +57,7 @@ app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile', { user: req.user });
 });
 
-app.use('/recipe', require('./controllers/recipe'));
+app.use('/recipe', isLoggedIn, require('./controllers/recipe'));
 
 app.use('/auth', require('./controllers/auth'));
 

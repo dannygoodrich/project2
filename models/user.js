@@ -46,8 +46,10 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     // associations can be defined here
-    models.user.hasOne(models.fridge);
-    models.user.hasMany(models.recipe);
+    models.user.hasMany(models.fridge);
+    models.user.belongsToMany(models.recipe, {
+      through: 'recipesusers'
+    });
   };
   // compares entered password to hashed password
   user.prototype.validPassword = function(passwordTyped) {
