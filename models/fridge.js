@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   fridge.associate = function(models) {
     // associations can be defined here
+    models.fridge.belongsTo(models.user);
   };
   return fridge;
 };

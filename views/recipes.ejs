@@ -1,15 +1,27 @@
 <h1>My Recipes</h1>
 <h3>hellllooo</h3>
 
-<% data.food.forEach(function(recipe) { %>
+<% data.recipes.forEach(function(recipe) { %>
     <h2><%= recipe.name %></h2>
     <a href="<%= recipe.link %>">recipe</a>
     <p><%= recipe.ingredients %></p>
+    <form action="/recipe/remove" method="POST">
+        <input hidden type="text" name="name" value="<%= recipe.name %>">
+        <button type="submit">Delete</button>
+    </form>
     
 <% }); %>
 
-<div>
-    <% data.pantry.forEach(function(fridge) { %>
-        <p><%= fridge.ingredients %></p>
-    <% }) %>
+
+<div class="container">
+    <h3>My pantry has:</h3>
+    <div>
+        <% data.items.forEach(function(fridge) { %>
+            <p><%= fridge.ingredients %></p>
+            <form action="/recipe/del" method="POST">
+                <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
+                <button type="submit">Delete</button>
+            </form>
+        <% }) %>
+    </div>
 </div>
