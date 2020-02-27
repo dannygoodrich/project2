@@ -12,7 +12,7 @@ var db = require('../models');
 
 
 router.get('/', function(req, res) {
-    var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i}`;
+    var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i}&q=${req.query.q}`;
     // Use request to call the API
 
     axios.get(puppyUrl).then( function(apiResponse) {
