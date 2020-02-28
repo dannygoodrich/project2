@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      pic: {
+        type: Sequelize.STRING
+      },
       link: {
         type: Sequelize.STRING
       },

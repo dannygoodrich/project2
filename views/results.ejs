@@ -3,20 +3,24 @@
 <a href="/">Home</a>
 <a href="/recipes">1MyRecipes</a>
 
+<div class="result">
+    <% bubble.forEach(function(recipe) { %>
+        <h2><%= recipe.title %></h2>
+        <a href="<%= recipe.href %>">recipe</a>
+        <p><%= recipe.ingredients %></p>
+        <img src=<%= recipe.thumbnail %> alt="">
+    
+    <form action="/recipe" method="post">
+        <input type="hidden" name="name" value="<%= recipe.title %>">
+        <input type="hidden" name="pic" value="<%= recipe.thumbnail %>">
+        <input type="hidden" name="link" value="<%= recipe.href %>">
+        <input type="hidden" name="ingredients" value="<%= recipe.ingredients %>">
+        <button type="submit">add to MyRecipes</button>
+    </form>
 
-<% bubble.forEach(function(recipe) { %>
-    <h2><%= recipe.title %></h2>
-    <a href="<%= recipe.href %>">recipe</a>
-    <p><%= recipe.ingredients %></p>
-    <img src=<%= recipe.thumbnail %> alt="">
+    <% }); %>
 
-<form action="/recipe" method="post">
-    <input type="hidden" name="name" value="<%= recipe.title %>">
-    <input type="hidden" name="link" value="<%= recipe.href %>">
-    <input type="hidden" name="ingredients" value="<%= recipe.ingredients %>">
-    <button type="submit">add to MyRecipes</button>
-</form>
+</div>
 
 
 
-<% }); %>

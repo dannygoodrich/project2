@@ -1,27 +1,43 @@
 <h1>My Recipes</h1>
-<h3>hellllooo</h3>
-
-<% data.recipes.forEach(function(recipe) { %>
-    <h2><%= recipe.name %></h2>
-    <a href="<%= recipe.link %>">recipe</a>
-    <p><%= recipe.ingredients %></p>
-    <form action="/recipe/remove" method="POST">
-        <input hidden type="text" name="name" value="<%= recipe.name %>">
-        <button type="submit">Delete</button>
-    </form>
-    
-<% }); %>
 
 
-<div class="container">
-    <h3>My pantry has:</h3>
-    <div>
-        <% data.items.forEach(function(fridge) { %>
-            <p><%= fridge.ingredients %></p>
-            <form action="/recipe/del" method="POST">
-                <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
-                <button type="submit">Delete</button>
-            </form>
-        <% }) %>
+<div class="row">
+    <% data.recipes.forEach(function(recipe) { %>
+    <div class="col-6">
+            <div class="recipe">
+
+                <h2><%= recipe.name %></h2>
+                <a href="<%= recipe.link %>">recipe >></a>
+                <p>Ingredients: <%= recipe.ingredients %></p>
+                
+                <form action="/recipe/remove" method="POST">
+                    <input hidden type="text" name="name" value="<%= recipe.name %>">
+                    <button class="btn btn-outline-dark" type="submit">Delete</button>
+                </form>
+                <br>
+            </div>
+            <hr class="featurette-divider">
+            
+        </div>
+        <div class="col-3">
+            <img class="img-thumbnail" src="<%= recipe.pic %>" alt="">
+        </div>
+        
+        <% }); %>
+
+
+
+
+    <div class="col floater mr-auto dropdown-toggle" data-toggle="dropdown">
+         <h3>My pantry has:</h3>
+        <div class="" id="dropdown01">
+            <% data.items.forEach(function(fridge) { %>
+                <p class="dropdown-item"><%= fridge.ingredients %></p>
+                <form class="form-inline" action="/recipe/del" method="POST">
+                    <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
+                    <button class="fridge-button delPantry btn-outline-dark" type="submit">Delete</button>
+                </form>
+            <% }) %>
+        </div>
     </div>
 </div>

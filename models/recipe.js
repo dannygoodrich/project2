@@ -2,6 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const recipe = sequelize.define('recipe', {
     name: DataTypes.STRING,
+    pic: DataTypes.STRING,
     link: DataTypes.STRING,
     ingredients: DataTypes.STRING,
     userid: DataTypes.INTEGER
@@ -9,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
   recipe.associate = function(models) {
     // associations can be defined here
     models.recipe.belongsToMany(models.user, {
-      through: 'recipesusers'
-    });
+             through: 'recipesusers'
+           });
   };
   return recipe;
 };

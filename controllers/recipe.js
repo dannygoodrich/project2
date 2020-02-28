@@ -131,6 +131,7 @@ router.post('/', function(req, res) {
         console.log('🌍')
         db.recipe.create({
             name: req.body.name,
+            pic: req.body.pic,
             link: req.body.link,
             ingredients: req.body.ingredients,
             userid: req.user.id
@@ -200,3 +201,58 @@ router.post('/del', function(req, res) {
 })
 
 module.exports = router;
+
+// 'use strict';
+// module.exports = (sequelize, DataTypes) => {
+//   const recipe = sequelize.define('recipe', {
+//     name: DataTypes.STRING,
+//     link: DataTypes.STRING,
+//     ingredients: DataTypes.STRING,
+//     userid: DataTypes.INTEGER
+//   }, {});
+//   recipe.associate = function(models) {
+//     // associations can be defined here
+//     models.recipe.belongsToMany(models.user, {
+//       through: 'recipesusers'
+//     });
+//   };
+//   return recipe;
+// };
+
+
+// 'use strict';
+// module.exports = {
+//   up: (queryInterface, Sequelize) => {
+//     return queryInterface.createTable('recipes', {
+//       id: {
+//         allowNull: false,
+//         autoIncrement: true,
+//         primaryKey: true,
+//         type: Sequelize.INTEGER
+//       },
+//       name: {
+//         type: Sequelize.STRING
+//       },
+//       link: {
+//         type: Sequelize.STRING
+//       },
+//       ingredients: {
+//         type: Sequelize.STRING
+//       },
+//       userid: {
+//         type: Sequelize.INTEGER
+//       },
+//       createdAt: {
+//         allowNull: false,
+//         type: Sequelize.DATE
+//       },
+//       updatedAt: {
+//         allowNull: false,
+//         type: Sequelize.DATE
+//       }
+//     });
+//   },
+//   down: (queryInterface, Sequelize) => {
+//     return queryInterface.dropTable('recipes');
+//   }
+// };
