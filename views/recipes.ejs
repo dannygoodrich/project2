@@ -1,3 +1,8 @@
+<br>
+<br>
+<br>
+<br>
+
 <h1>My Recipes</h1>
 
 
@@ -6,7 +11,7 @@
     <div class="col-6">
             <div class="recipe">
 
-                <h2><%= recipe.name %></h2>
+                <h3 class="underline"><%= recipe.name %></h3>
                 <a href="<%= recipe.link %>">recipe >></a>
                 <p>Ingredients: <%= recipe.ingredients %></p>
                 
@@ -28,15 +33,21 @@
 
 
 
-    <div class="col floater mr-auto dropdown-toggle" data-toggle="dropdown">
+    <div class="col floater mr-auto dropdown-toggle" data-toggle="">
          <h3>My pantry has:</h3>
-        <div class="" id="dropdown01">
+        <div class="" id="">
             <% data.items.forEach(function(fridge) { %>
+                <div class="bop">
+                    <form class="form-inline" action="/recipe/del" method="POST">
+                        <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
+                        <button class="fridge-button delPantry btn-outline-dark" type="submit">✖️</button>
+                    </form>
+                    <ul>
+                        <li></li>
+                    </ul>
                 <p class="dropdown-item"><%= fridge.ingredients %></p>
-                <form class="form-inline" action="/recipe/del" method="POST">
-                    <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
-                    <button class="fridge-button delPantry btn-outline-dark" type="submit">Delete</button>
-                </form>
+                </div>
+                <br />
             <% }) %>
         </div>
     </div>

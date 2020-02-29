@@ -12,11 +12,13 @@ var db = require('../models');
 
 
 router.get('/', function(req, res) {
+    
     var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i}&q=${req.query.q}`;
     // Use request to call the API
 
     axios.get(puppyUrl).then( function(apiResponse) {
       var recipe = apiResponse.data.results;
+      
     //   console.log(recipe);
     //   console.log(apiResponse);
       res.render('results', { bubble: recipe });
@@ -25,6 +27,53 @@ router.get('/', function(req, res) {
         res.send('error');
   });
 });
+
+router.get('/x', function(req, res) {
+    db.user.findOne({
+        where: { id: req.user.id},
+        include: [db.fridge]
+    }).then(function(currUser){
+        db.fridge.findAll({
+            where: { userId: currUser.id }
+        }).then(function(currFridge) {
+            res.render('search', {data: {user: currUser, items: currFridge}});
+
+        })
+
+    })
+});
+
+let customQueryI = "";
+let customQueryQ = "";
+
+// router.get('/x', function(req, res) {
+//     db.user.findOne({
+//         where: { id: req.user.id },
+//         include: [db.fridge]
+//     }).then(function(currUser) {
+//         db.fridge.findAll({
+//             where: { userId: currUser.id }
+//         }).then(function(currFridge) {
+//             res.render('search', {data: {user: currUser, items: currFridge}});
+//         }).then(function(req, res) {
+//     var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i},${req.query.p}&q=${req.query.q}`;
+//     // Use request to call the API
+//     console.log('🎪');
+//     axios.get(puppyUrl).then( function(apiResponse) {
+//       var recipe = apiResponse.data.results;
+//       console.log('🏆');
+//     //   console.log(recipe);
+//     //   console.log(apiResponse);
+//       res.render('results', { bubble: recipe });
+//     }).catch(err => {
+//         console.log(err);
+//         res.send('error');
+//   });
+//         })
+//     })
+// })
+
+
 
 // get recipes from db
 router.get('/recipes', function(req, res) {
@@ -83,9 +132,9 @@ router.get('/food', function(req, res) {
     db.user.findOne({
         where: { id: req.user.id },
         include: [db.fridge]
-    }).then(function() {
+    }).then(function(currUser) {
         db.fridge.findAll({
-            where: { userId: req.user.id }
+            where: { userId: currUser.id }
         }).then(function(fridge) {
             console.log('🔥');
             res.render('pantry', {data: { apple: fridge }});
@@ -160,7 +209,7 @@ router.post('/food', function(req, res) {
             ingredients: req.body.ingredient,
             userId: req.user.id
         }).then(function() {
-            res.redirect('/recipe/recipes');
+            res.redirect('/recipe/food');
         })
     })
 })
@@ -202,57 +251,5 @@ router.post('/del', function(req, res) {
 
 module.exports = router;
 
-// 'use strict';
-// module.exports = (sequelize, DataTypes) => {
-//   const recipe = sequelize.define('recipe', {
-//     name: DataTypes.STRING,
-//     link: DataTypes.STRING,
-//     ingredients: DataTypes.STRING,
-//     userid: DataTypes.INTEGER
-//   }, {});
-//   recipe.associate = function(models) {
-//     // associations can be defined here
-//     models.recipe.belongsToMany(models.user, {
-//       through: 'recipesusers'
-//     });
-//   };
-//   return recipe;
-// };
 
 
-// 'use strict';
-// module.exports = {
-//   up: (queryInterface, Sequelize) => {
-//     return queryInterface.createTable('recipes', {
-//       id: {
-//         allowNull: false,
-//         autoIncrement: true,
-//         primaryKey: true,
-//         type: Sequelize.INTEGER
-//       },
-//       name: {
-//         type: Sequelize.STRING
-//       },
-//       link: {
-//         type: Sequelize.STRING
-//       },
-//       ingredients: {
-//         type: Sequelize.STRING
-//       },
-//       userid: {
-//         type: Sequelize.INTEGER
-//       },
-//       createdAt: {
-//         allowNull: false,
-//         type: Sequelize.DATE
-//       },
-//       updatedAt: {
-//         allowNull: false,
-//         type: Sequelize.DATE
-//       }
-//     });
-//   },
-//   down: (queryInterface, Sequelize) => {
-//     return queryInterface.dropTable('recipes');
-//   }
-// };
