@@ -28,10 +28,13 @@
 
       </nav>
     </header>
-    <div class="container">
+    <div class="">
+      <div class="">
+        <% include partials/alerts %>
+        <%- body %>
+
+      </div>
       
-      <% include partials/alerts %>
-      <%- body %>
     </div>
     <footer class="fixed-bottom">
       <div class="container">

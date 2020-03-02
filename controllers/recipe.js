@@ -4,10 +4,6 @@ const axios = require('axios');
 
 var db = require('../models');
 
-// var fridge = db.fridge.findAll({
-//     where: { id: req.user.id },
-//     include: [db.fridge]
-// });
 
 
 
@@ -16,6 +12,7 @@ router.get('/', function(req, res) {
     var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i}&q=${req.query.q}`;
     // Use request to call the API
 
+    
     axios.get(puppyUrl).then( function(apiResponse) {
       var recipe = apiResponse.data.results;
       
@@ -46,32 +43,7 @@ router.get('/x', function(req, res) {
 let customQueryI = "";
 let customQueryQ = "";
 
-// router.get('/x', function(req, res) {
-//     db.user.findOne({
-//         where: { id: req.user.id },
-//         include: [db.fridge]
-//     }).then(function(currUser) {
-//         db.fridge.findAll({
-//             where: { userId: currUser.id }
-//         }).then(function(currFridge) {
-//             res.render('search', {data: {user: currUser, items: currFridge}});
-//         }).then(function(req, res) {
-//     var puppyUrl = `http://www.recipepuppy.com/api/?i=${req.query.i},${req.query.p}&q=${req.query.q}`;
-//     // Use request to call the API
-//     console.log('🎪');
-//     axios.get(puppyUrl).then( function(apiResponse) {
-//       var recipe = apiResponse.data.results;
-//       console.log('🏆');
-//     //   console.log(recipe);
-//     //   console.log(apiResponse);
-//       res.render('results', { bubble: recipe });
-//     }).catch(err => {
-//         console.log(err);
-//         res.send('error');
-//   });
-//         })
-//     })
-// })
+
 
 
 
@@ -104,25 +76,7 @@ router.get('/recipes', function(req, res) {
     });
 
 
-// router.get('/recipes', function(req, res) {
-//     db.user.findOne({
-//         where: { id: req.user.id },
-//         include: [db.recipe, db.fridge]
-//     }).then(function() {
-//         db.recipe.findAll({
-//             where: { userid: req.user.id }
-//         }).then(function() {
-//             db.fridge.findAll({
-//                 where: {userId: req.user.id}
-//             }).then(function(recipes, fridges) {
-//                 console.log('⛈');
-//                 res.render('recipes', { data: { food: recipes, pantry: fridges }});
-//             })
-// //{ food: recpes })
-//         })
 
-//     });
-// });
 
 
 
@@ -145,30 +99,7 @@ router.get('/food', function(req, res) {
 
 
 
-// router.post('/', function(req, res) {
-//     db.recipe.create({
-//         name: req.body.name,
-//         link: req.body.link,
-//         ingredients: req.body.ingredients,
-//         userid: 2
-//     }).then(function(recipes){
-//         console.log('🌈');
-//         res.redirect('/recipe/recipes');
-//     }).then(([recipe, wasCreated]) => {
-//         user.addRecipe(recipe);
-//     }).catch(err => {
-//         console.log(err);
-//         res.send('error');
-//     })
-// });
 
-// call user table, db user.findOne where {id:rew.user.id}, include: [db.recipe]
-// .then(function(user) {
-//     then create recipe  
-//         then madeRecipe.addRecipes(user)
-//         then function(madeRecipe)
-//         madeRecipe(user)
-// })
 
 // post to Myrecipes
 router.post('/', function(req, res) {
@@ -214,11 +145,6 @@ router.post('/food', function(req, res) {
     })
 })
 
-{/* <div>
-    <% data.pantry.forEach(function(fridge) { %>
-        <p><%= fridge.ingredients %></p>
-    <% }) %>
-</div> */}
 
 router.post('/remove', function(req, res) {
     console.log(req.body.value)

@@ -1,6 +1,7 @@
 body {
     background-color: white;
     font-kerning: normal;
+    font-family: "calibri";
 }
 
 .alert {
@@ -26,9 +27,7 @@ a {
     background-color: rgb(229, 234, 241);
     
 }
-img {
-    padding:10px;
-}
+
 
 .floater {
     position: fixed;
@@ -136,6 +135,19 @@ bg-light {
 .background {
     background-image: url('/img/food.jpg');
 }
-html {
-    background-image: url('/img/food.jpg');
+.welcome {
+    color: rgb(230, 236, 215);
+    text-decoration: underline;
+    position: fixed;
+    margin-left: 25%;
+}
+
+.background2 {
+    background-image: url('/img/food2.jpg');
+}
+.vertical-align {
+    margin-top: 25%;
+}
+a:hover {
+    color: rgb(0, 0, 0);
 }

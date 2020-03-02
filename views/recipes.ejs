@@ -1,54 +1,77 @@
-<br>
-<br>
-<br>
-<br>
+<div class="contaainer">
 
-<h1 class="center">MY RECIPES</h1>
-
-
-<div class="row">
-    <% data.recipes.forEach(function(recipe) { %>
-    <div class="col-6">
-            <div class="recipe">
-
-                <h3 class="underline"><%= recipe.name.toUpperCase() %></h3>
-                <a href="<%= recipe.link %>">recipe >></a>
-                <p>Ingredients: <%= recipe.ingredients %></p>
-                
-                <form action="/recipe/remove" method="POST">
-                    <input hidden type="text" name="name" value="<%= recipe.name %>">
-                    <button class="btn btn-outline-dark" type="submit">Delete</button>
-                </form>
-                <br>
-            </div>
-            <hr class="featurette-divider">
-            
-        </div>
-        <div class="col-3">
-            <img class="img-thumbnail" src="<%= recipe.pic %>" alt="">
-        </div>
-        
-        <% }); %>
-
-
-
-
-    <div class="col floater mr-auto dropdown-toggle" data-toggle="">
-         <h3>My pantry has:</h3>
-        <div class="" id="">
-            <% data.items.forEach(function(fridge) { %>
-                <div class="pantry-float">
-                    <form class="form-inline" action="/recipe/del" method="POST">
-                        <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
-                        <button class="fridge-button delPantry btn-outline-dark" type="submit">✖️</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <h1 class="center">MY RECIPES</h1>
+    
+    
+    <div class="row container">
+        <% data.recipes.forEach(function(recipe) { %>
+        <div class="col-6">
+                <div class="recipe">
+    
+                    <h3 class="underline"><%= recipe.name.toUpperCase() %></h3>
+                    <a href="<%= recipe.link %>">recipe >></a>
+                    <p>Ingredients: <%= recipe.ingredients %></p>
+                    
+                    <form action="/recipe/remove" method="POST">
+                        <input hidden type="text" name="name" value="<%= recipe.name %>">
+                        <button class="btn btn-outline-dark pantry-btn" type="submit">Delete</button>
                     </form>
-                    
-                        
-                    
-                <p class="dropdown-item"><%= fridge.ingredients %></p>
+                    <br>
                 </div>
-                <br />
-            <% }) %>
+                <hr class="featurette-divider">
+                
+            </div>
+            <div class="col-3">
+                <img class="img-thumbnail vertical-align" src="<%= recipe.pic %>" alt="">
+            </div>
+            
+            <% }); %>
+    
+    
+    
+    
+        <div class="col floater mr-auto dropdown-toggle" data-toggle="">
+             <h3>My pantry has:</h3>
+            <div class="" id="">
+                <% data.items.forEach(function(fridge) { %>
+                    <div class="pantry-float">
+                        <form class="form-inline" action="/recipe/del" method="POST">
+                            <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
+                            <button class="fridge-button delPantry btn-outline-dark" type="submit">✖️</button>
+                        </form>
+                        
+                            
+                        
+                    <p class="dropdown-item"><%= fridge.ingredients %></p>
+                    </div>
+                    <br />
+                <% }) %>
+            </div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
