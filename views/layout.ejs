@@ -13,17 +13,17 @@
   <body>
     <%- JSON.stringify(currentUser) %>
     <header class="">
-      <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top row">
+      <nav class="navbar navbar-expand-sm bg-ligth navbar-light nav-color fixed-top row" id="nav-color">
         <% if (currentUser) { %>
-          <a href="/recipe/recipes">MyRecipes</a>
-          <a href="/recipe/food">MyPantry</a>
-          <a href="/">Home</a>
-          <a href="/recipe/x">Search</a>
-          <a class="p-2 ml-auto" href="/auth/logout">Logout</a>
+          <a class="nav-text" href="/recipe/recipes">MY RECIPES</a>
+          <a class="nav-text" href="/recipe/food">MY PANTRY</a>
+          <a class="nav-text" href="/">HOME</a>
+          <a class="nav-text" href="/recipe/x">SEARCH</a>
+          <a class="p-2 ml-auto nav-text" href="/auth/logout">LOG OUT</a>
 
           <% } else { %>
-            <a href="/auth/signup">Signup</a>
-            <a href="/auth/login">Login</a>
+            <a class="nav-text" href="/auth/signup">SIGNUP</a>
+            <a class="nav-text" href="/auth/login">LOGIN</a>
         <% } %>
 
       </nav>

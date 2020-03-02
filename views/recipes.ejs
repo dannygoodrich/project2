@@ -3,7 +3,7 @@
 <br>
 <br>
 
-<h1>My Recipes</h1>
+<h1 class="center">MY RECIPES</h1>
 
 
 <div class="row">
@@ -11,7 +11,7 @@
     <div class="col-6">
             <div class="recipe">
 
-                <h3 class="underline"><%= recipe.name %></h3>
+                <h3 class="underline"><%= recipe.name.toUpperCase() %></h3>
                 <a href="<%= recipe.link %>">recipe >></a>
                 <p>Ingredients: <%= recipe.ingredients %></p>
                 
@@ -37,14 +37,14 @@
          <h3>My pantry has:</h3>
         <div class="" id="">
             <% data.items.forEach(function(fridge) { %>
-                <div class="bop">
+                <div class="pantry-float">
                     <form class="form-inline" action="/recipe/del" method="POST">
                         <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
                         <button class="fridge-button delPantry btn-outline-dark" type="submit">✖️</button>
                     </form>
-                    <ul>
-                        <li></li>
-                    </ul>
+                    
+                        
+                    
                 <p class="dropdown-item"><%= fridge.ingredients %></p>
                 </div>
                 <br />

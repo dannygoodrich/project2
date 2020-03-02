@@ -1,6 +1,10 @@
+<br>
+<br>
+<br>
+<br>
+            
 
-
-<h1 class="jumbotron text-center style="margin-bottom:0">My pantry</h1>
+<h1 class="center head">My pantry</h1>
     
     <div class="container">
     <form class="form-inline my-2" action="/recipe/food" method="post">
@@ -15,11 +19,11 @@
                    <% data.apple.forEach(function(fridge) { %>
                        <div class="bop">
                            <form class="form-inline" action="/recipe/del" method="POST">
-                               <input hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
+                               <input class="pantry-font" hidden type="text" name="name" id="<%= fridge.id %>" value="<%= fridge.id %>">
                                <button class="fridge-button delPantry btn-outline-dark" type="submit">✖️</button>
                            </form>
                            <ul>
-                               <li></li>
+                               
                            </ul>
                        <p class="dropdown-item"><%= fridge.ingredients %></p>
                        </div>

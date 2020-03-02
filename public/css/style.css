@@ -1,5 +1,6 @@
 body {
-    background-color: whitesmoke;
+    background-color: white;
+    font-kerning: normal;
 }
 
 .alert {
@@ -17,8 +18,8 @@ body {
 }
 
 a {
-    margin: 1%;
-    color: green;
+    
+    color: rgb(124, 124, 49);
 }
 
 .result {
@@ -32,8 +33,8 @@ img {
 .floater {
     position: fixed;
     margin-left: 70%;
-    background-color: rgb(229, 241, 226);
-    border-radius: 25px;
+    background-color: rgb(221, 218, 140);
+    
     width: 20%;
 }
 
@@ -51,12 +52,17 @@ footer {
 
 .recipe {
     margin: 10px;
-    background-color: rgb(175, 247, 193);
+    background-color: white;
     border-radius: 10px;
+    
+}
+.underline {
+    color: rgb(154, 154, 55);
 }
 
 nav {
     position: fixed;
+    background-color: green;
 }
 .right{
     justify-content: end;
@@ -72,17 +78,64 @@ img {
 
 .bop {
     display: inline-flex;
+    font-size: 4vh;
+    
 }
 
 .pantry-btn {
     line-height: 1;
-    background-color: green;
+    background-color:rgb(154, 154, 55);
     border: none;
+
 }
 
 .pantry-btn:hover {
-    background-color: green;
+    background-color: rgb(180, 186, 210);
 }
 .underline {
     text-decoration: underline;
+}
+bg-light {
+    background-color: green;
+}
+
+.nav-text {
+    color: white;
+    margin: 1%;
+}
+
+#nav-color {
+    background-color: rgb(154, 154, 55);
+    color: rgb(187, 204, 117);
+}
+
+.center {
+    text-align: center;
+    margin-bottom: 6vh;
+    font-size: 10vh;
+    color: rgb(154, 154, 55);
+    letter-spacing: 1rem; 
+}
+
+.pantry-font {
+    text-decoration: yellow;
+}
+
+.fridge-button {
+    font-size: 4vh;
+}
+
+.head {
+    margin-bottom: 4%;
+}
+
+.pantry-float {
+    display: inline-flex;
+}
+
+.background {
+    background-image: url('/img/food.jpg');
+}
+html {
+    background-image: url('/img/food.jpg');
 }
